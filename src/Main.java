@@ -75,10 +75,6 @@ public class Main {
     }
 
     public static void show(ArrayList<String> list) {
-        System.out.println("Молоко");
-        System.out.println("Хлеб");
-        System.out.println("Сыр");
-
         for (String i : list) {
             System.out.println(list.indexOf(i) + 1 + ". " + i);
         }

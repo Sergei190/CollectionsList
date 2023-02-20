@@ -10,11 +10,11 @@ public class Main {
         ArrayList<String> list = new ArrayList<>();
 
         while (true) {
-            System.out.println("Выберите операцию:");
-            System.out.println("1. Операция добавить");
-            System.out.println("2. Операция показать");
-            System.out.println("3. Операция удалить");
-            System.out.println("4. Введите текст для поиска:");
+            getPrintln("Выберите операцию:");
+            getPrintln("1. Операция добавить");
+            getPrintln("2. Операция показать");
+            getPrintln("3. Операция удалить");
+            getPrintln("4. Введите текст для поиска:");
 
             purchase= scanner.nextLine();
 
@@ -23,10 +23,10 @@ public class Main {
             } else {
                 switch (purchase) {
                     case ("1"): {
-                        System.out.println("Какую покупку хотите добавить?");
+                        getPrintln("Какую покупку хотите добавить?");
                         purchase = scanner.nextLine();
                         list.add(purchase);
-                        System.out.println("Итого в списке покупок: " + list.size());
+                        getPrintln("Итого в списке покупок: " + list.size());
                         break;
                     }
                     case ("2"): {
@@ -34,7 +34,7 @@ public class Main {
                         break;
                     }
                     case ("3"): {
-                        System.out.println("Какую хотите удалить? Введите номер или название");
+                        getPrintln("Какую хотите удалить? Введите номер или название");
                         show(list);
                         purchase = scanner.nextLine();
                         try {
@@ -43,9 +43,9 @@ public class Main {
                             for (int i = 0; i < list.size(); i++) {
                                 if (list.get(i).equalsIgnoreCase(purchase)) {
                                     list.remove(i);
-                                    System.out.println("Пункт покупки удален!");
+                                    getPrintln("Пункт покупки удален!");
                                 } else {
-                                    System.out.println("Такой элемент не найден!");
+                                    getPrintln("Такой элемент не найден!");
                                 }
                             }
                         }
@@ -53,17 +53,17 @@ public class Main {
                         break;
                     }
                     case ("4"): {
-                        System.out.println("Введите текст для поиска:");
+                        getPrintln("Введите текст для поиска:");
                         purchase = scanner.nextLine();
                         try {
-                            System.out.println("Найдено: " + purchase + ". " + list.get(Integer.parseInt(purchase) - 1));
+                            getPrintln("Найдено: " + purchase + ". " + list.get(Integer.parseInt(purchase) - 1));
                         } catch (NumberFormatException e) {
                             String lowerCase;
                             String scanLow = purchase.toLowerCase();
                             for (int i = 0; i < list.size(); i++) {
                                 lowerCase = list.get(i).toLowerCase();
                                 if (lowerCase.contains(scanLow)) {
-                                    System.out.println((list.indexOf(list.get(i)) + 1) + ". " + list.get(i));
+                                    getPrintln((list.indexOf(list.get(i)) + 1) + ". " + list.get(i));
                                 }
                             }
                         }
@@ -74,9 +74,13 @@ public class Main {
         }
     }
 
+    private static void getPrintln(String x) {
+        System.out.println(x);
+    }
+
     public static void show(ArrayList<String> list) {
         for (String i : list) {
-            System.out.println(list.indexOf(i) + 1 + ". " + i);
+            getPrintln(list.indexOf(i) + 1 + ". " + i);
         }
     }
 }
